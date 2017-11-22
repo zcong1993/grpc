@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package echo;
+
+service Echoer {
+    rpc Echo (EchoRequest) returns (EchoResponse) {}
+    rpc EchoAgain (EchoRequest) returns (EchoResponse) {}
+}
+
+message EchoRequest {
+    string name = 1;
+    int64 age = 2;
+}
+
+message EchoResponse {
+    string name = 1;
+    int64 age = 2;
+}
