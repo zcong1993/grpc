@@ -1,8 +1,8 @@
 package main
 
 import (
-	context "golang.org/x/net/context"
 	pb "github.com/zcong1993/grpc/echo"
+	context "golang.org/x/net/context"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 	"log"
@@ -25,7 +25,7 @@ func (s *server) EchoAgain(ctx context.Context, in *pb.EchoRequest) (*pb.EchoRes
 
 func (s *server) EchoStream(req *pb.EchoRequest, stream pb.Echoer_EchoStreamServer) error {
 	for i := 0; i < 10; i++ {
-		if err := stream.Send(&pb.EchoResponse{Name: req.Name, Age: req.Age}); err != nil {
+		if err := stream.Send(&pb.EchoResponse{Name: req.Name, Age: int64(i)}); err != nil {
 			return err
 		}
 	}

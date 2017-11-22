@@ -28,12 +28,12 @@ func Run() {
 	if err != nil {
 		log.Fatalf("could not greet: %v", err)
 	}
-	fmt.Printf("%+v", r)
+	fmt.Printf("%+v\n", r)
 	r, err = c.EchoAgain(context.Background(), &pb.EchoRequest{name, age})
 	if err != nil {
 		log.Fatalf("could not greet: %v", err)
 	}
-	fmt.Printf("%+v", r)
+	fmt.Printf("%+v\n", r)
 	stream, err := c.EchoStream(context.Background(), &pb.EchoRequest{name, age})
 	if err != nil {
 		log.Fatalf("could not greet: %v", err)
@@ -46,6 +46,6 @@ func Run() {
 		if err != nil {
 			log.Fatalf("could not greet: %v", err)
 		}
-		fmt.Printf("%+v", r)
+		fmt.Printf("%+v\n", r)
 	}
 }
