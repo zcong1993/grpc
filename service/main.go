@@ -3,16 +3,15 @@ package main
 import (
 	"context"
 	pb "github.com/zcong1993/grpc/echo"
-	"net"
-	"google.golang.org/grpc/reflection"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 	"log"
+	"net"
 )
 
 const port = ":9393"
 
 type server struct {
-
 }
 
 func (s *server) Echo(ctx context.Context, in *pb.EchoRequest) (*pb.EchoResponse, error) {

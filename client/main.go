@@ -1,27 +1,24 @@
-package main
+package client
 
 import (
-	"google.golang.org/grpc"
-	"log"
-	pb "github.com/zcong1993/grpc/echo"
-	"os"
 	"context"
 	"fmt"
+	pb "github.com/zcong1993/grpc/echo"
+	"log"
+	"os"
 )
 
 const (
-	address     = "localhost:9393"
-	defaultName = "zcong"
-	age	= 18
+	defaultName = "zcong1993"
+	age         = 18
 )
 
-func main() {
-	conn, err := grpc.Dial(address, grpc.WithInsecure())
+func Run() {
+	c, conn, err := CreateEchoClient("")
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}
 	defer conn.Close()
-	c := pb.NewEchoerClient(conn)
 	name := defaultName
 	if len(os.Args) > 1 {
 		name = os.Args[1]
