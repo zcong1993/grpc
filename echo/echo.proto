@@ -5,6 +5,7 @@ package echo;
 service Echoer {
     rpc Echo (EchoRequest) returns (EchoResponse) {}
     rpc EchoAgain (EchoRequest) returns (EchoResponse) {}
+    rpc EchoStream (EchoRequest) returns (stream EchoResponse) {}
 }
 
 message EchoRequest {

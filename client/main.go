@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	pb "github.com/zcong1993/grpc/echo"
+	"io"
 	"log"
 	"os"
 )
@@ -33,4 +34,18 @@ func Run() {
 		log.Fatalf("could not greet: %v", err)
 	}
 	fmt.Printf("%+v", r)
+	stream, err := c.EchoStream(context.Background(), &pb.EchoRequest{name, age})
+	if err != nil {
+		log.Fatalf("could not greet: %v", err)
+	}
+	for {
+		r, err := stream.Recv()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			log.Fatalf("could not greet: %v", err)
+		}
+		fmt.Printf("%+v", r)
+	}
 }
