@@ -6,9 +6,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/zcong1993/grpc/client"
 	pb "github.com/zcong1993/grpc/echo"
+	"io"
 	"net/http"
 	"strconv"
-	"io"
 )
 
 func main() {
@@ -61,7 +61,7 @@ func main() {
 	})
 
 	router.GET("/stream", func(c *gin.Context) {
-		stream, err := clt.EchoStream(context.Background(), &pb.EchoRequest{"l", 18})
+		stream, err := clt.EchoStream(context.Background(), &pb.EchoRequest{Name: "l", Age: 18})
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{
 				"message": err.Error(),

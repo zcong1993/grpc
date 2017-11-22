@@ -11,7 +11,7 @@ import (
 
 const port = ":9393"
 
-type server struct {}
+type server struct{}
 
 func (s *server) Echo(ctx context.Context, in *pb.EchoRequest) (*pb.EchoResponse, error) {
 	log.Println("invoke echo")
