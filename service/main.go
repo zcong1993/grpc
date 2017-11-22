@@ -1,7 +1,7 @@
 package main
 
 import (
-	"context"
+	context "golang.org/x/net/context"
 	pb "github.com/zcong1993/grpc/echo"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
